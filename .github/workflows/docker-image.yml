@@ -52,6 +52,11 @@ jobs:
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new
 
+    - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
     # - name: Build, tag, and push image to Amazon ECR
     #   env:
     #     ECR_REGISTRY: 767282627159.dkr.ecr.us-east-1.amazonaws.com
