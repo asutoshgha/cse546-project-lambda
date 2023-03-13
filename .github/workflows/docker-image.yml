@@ -48,7 +48,7 @@ jobs:
         context: .
         builder: ${{ steps.buildx.outputs.name }}
         push: true
-        tags: ${{ secrets.DEV_ECR_REGISTRY }}/${{ secrets.DEV_ECR_REPO }}:v1
+        tags: ${{ secrets.DEV_ECR_REGISTRY }}/${{ secrets.DEV_ECR_REPO }}:${{ $(git rev-parse --short HEAD) }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new
 
