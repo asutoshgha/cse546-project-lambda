@@ -48,14 +48,12 @@ jobs:
             ${{ runner.os }}-buildx-
     
     - name: Build Docker image
-      uses: docker/build-push-action@v2
-      env:
-        BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
+      uses: docker/build-push-action@v2 
       with:
         context: .
         builder: ${{ steps.buildx.outputs.name }}
         push: true
-        tags: ${{ secrets.DEV_ECR_REGISTRY }}/${{ secrets.DEV_ECR_REPO }}:${{ BRANCH_NAME }}-${{ github.run_number }}
+        tags: ${{ secrets.DEV_ECR_REGISTRY }}/${{ secrets.DEV_ECR_REPO }}:master-${{ github.run_number }}
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new
 
