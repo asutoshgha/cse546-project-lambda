@@ -17,7 +17,7 @@ jobs:
 
     - name: Extract branch name
       shell: bash
-      run: echo "${GITHUB_REF##*/}"
+      run: echo "master"
       id: extract_branch 
 
     - name: Check out code
